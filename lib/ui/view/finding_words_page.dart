@@ -10,9 +10,9 @@ class FindingWordsPage extends StatelessWidget {
     TextEditingController _searchController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Color(0xFF1D1F21),
+      backgroundColor: const Color(0xFF1D1F21),
       appBar: AppBar(
-        backgroundColor: Color(0xFF1D1F21),
+        backgroundColor: const Color(0xFF1D1F21),
         elevation: 0,
         title: Text(
           '단어찾기',
@@ -33,7 +33,7 @@ class FindingWordsPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFF2C2E30),
+                  color: const Color(0xFF2C2E30),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
