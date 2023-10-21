@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:lexi_learn/ui/widget/ability_widget.dart';
 
@@ -80,11 +81,16 @@ class MainPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /// 단어 찾기
-                  abilityWidget(
-                    abilityWidgetWid,
-                    'wordIcon',
-                    '단어찾기',
-                    '모르는 단어를 AI에게 물어봐요!',
+                  GestureDetector(
+                    onTap: () {
+                      context.go('/findingWords');
+                    },
+                    child: abilityWidget(
+                      abilityWidgetWid,
+                      'wordIcon',
+                      '단어찾기',
+                      '모르는 단어를 AI에게 물어봐요!',
+                    ),
                   ),
 
                   /// 위키요약
