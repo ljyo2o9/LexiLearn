@@ -83,7 +83,7 @@ class MainPage extends StatelessWidget {
                   /// 단어 찾기
                   GestureDetector(
                     onTap: () {
-                      context.go('/findingWords');
+                      context.push('/findingWords');
                     },
                     child: abilityWidget(
                       abilityWidgetWid,
