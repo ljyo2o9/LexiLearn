@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import 'package:lexi_learn/ui/view_model/finding_word_view_model.dart';
 
 class FindingWordsPage extends StatelessWidget {
   const FindingWordsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _searchController = TextEditingController();
+    var getFindingWord = Provider.of<FindingWordsViewModel>(context);
+    TextEditingController searchController = TextEditingController();
 
     return Scaffold(
       backgroundColor: const Color(0xFF1D1F21),
@@ -75,22 +79,19 @@ class FindingWordsPage extends StatelessWidget {
                       ),
                       //
                       /// TextField
-                      Center(
-                        child: SizedBox(
-                          height: 30.h,
-                          child: TextField(
-                            controller: _searchController,
-                            maxLength: 1000,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              counterText: '',
-                            ),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'NotoSansKR',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20.sp,
-                            ),
+                      SizedBox(
+                        child: TextField(
+                          controller: searchController,
+                          maxLength: 1000,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            counterText: '',
+                          ),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'NotoSansKR',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20.sp,
                           ),
                         ),
                       ),
@@ -109,6 +110,37 @@ class FindingWordsPage extends StatelessWidget {
                 height: 10.h,
               ),
             ),
+
+            const Expanded(child: SizedBox()),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10.h),
+              child: GestureDetector(
+                onTap: () {
+                  getFindingWord.getFindingWordsList(searchController.text);
+                },
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFED702D),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 19.h, bottom: 19.h),
+                    child: Center(
+                      child: Text(
+                        '검색하기',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'NotoSansKR',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20.sp,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
