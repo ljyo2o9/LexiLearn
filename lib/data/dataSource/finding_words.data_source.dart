@@ -4,7 +4,7 @@ import 'package:lexi_learn/data/model/finding_words_model.dart';
 import 'package:lexi_learn/secret.dart';
 
 class FindingWordData {
-  Future<List<WWNWordInfo>> getWordList() async {
+  Future<List<WWNWordInfo>> getWordList(String word) async {
     final baseOptions = BaseOptions(
       baseUrl: 'http://aiopen.etri.re.kr:8000',
       headers: {'Authorization': secret},
@@ -14,7 +14,7 @@ class FindingWordData {
 
     final response = await dio.post('/WiseWWN/Word', data: {
       "request_id": "1",
-      "argument": {"word": "창문"}
+      "argument": {"word": word}
     });
 
     var responseData = FindingWordsModel.fromJson(response.data);
