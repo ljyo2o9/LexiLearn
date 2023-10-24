@@ -4,16 +4,22 @@ class FindingWordsModel {
   String? returnType;
   ReturnObject? returnObject;
 
-  FindingWordsModel(
-      {this.requestId, this.result, this.returnType, this.returnObject});
+  FindingWordsModel({
+    this.requestId,
+    this.result,
+    this.returnType,
+    this.returnObject,
+  });
 
-  FindingWordsModel.fromJson(Map<String, dynamic> json) {
-    requestId = json['request_id'];
-    result = json['result'];
-    returnType = json['return_type'];
-    returnObject = json['return_object'] != null
-        ? ReturnObject.fromJson(json['return_object'])
-        : null;
+  factory FindingWordsModel.fromJson(Map<String, dynamic> json) {
+    return FindingWordsModel(
+      requestId: json['request_id'],
+      result: json['result'],
+      returnType: json['return_type'],
+      returnObject: json['return_object'] != null
+          ? ReturnObject.fromJson(json['return_object'])
+          : null,
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -32,17 +38,19 @@ class ReturnObject {
   MetaInfo? metaInfo;
   List<WWNWordInfo>? wWNWordInfo;
 
-  ReturnObject({this.metaInfo, this.wWNWordInfo});
+  ReturnObject({
+    this.metaInfo,
+    this.wWNWordInfo,
+  });
 
-  ReturnObject.fromJson(Map<String, dynamic> json) {
-    metaInfo =
-        json['MetaInfo'] != null ? MetaInfo.fromJson(json['MetaInfo']) : null;
-    if (json['WWN WordInfo'] != null) {
-      wWNWordInfo = <WWNWordInfo>[];
-      json['WWN WordInfo'].forEach((v) {
-        wWNWordInfo!.add(WWNWordInfo.fromJson(v));
-      });
-    }
+  factory ReturnObject.fromJson(Map<String, dynamic> json) {
+    return ReturnObject(
+      metaInfo:
+          json['MetaInfo'] != null ? MetaInfo.fromJson(json['MetaInfo']) : null,
+      wWNWordInfo: (json['WWN WordInfo'] as List<dynamic>?)
+          ?.map((v) => WWNWordInfo.fromJson(v))
+          .toList(),
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -61,11 +69,16 @@ class MetaInfo {
   String? title;
   String? link;
 
-  MetaInfo({this.title, this.link});
+  MetaInfo({
+    this.title,
+    this.link,
+  });
 
-  MetaInfo.fromJson(Map<String, dynamic> json) {
-    title = json['Title'];
-    link = json['Link'];
+  factory MetaInfo.fromJson(Map<String, dynamic> json) {
+    return MetaInfo(
+      title: json['Title'],
+      link: json['Link'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -83,20 +96,24 @@ class WWNWordInfo {
   List<String>? synonym;
   List<String>? antonym;
 
-  WWNWordInfo(
-      {this.word, this.homonymCode, this.wordInfo, this.synonym, this.antonym});
+  WWNWordInfo({
+    this.word,
+    this.homonymCode,
+    this.wordInfo,
+    this.synonym,
+    this.antonym,
+  });
 
-  WWNWordInfo.fromJson(Map<String, dynamic> json) {
-    word = json['Word'];
-    homonymCode = json['HomonymCode'];
-    if (json['WordInfo'] != null) {
-      wordInfo = <WordInfo>[];
-      json['WordInfo'].forEach((v) {
-        wordInfo!.add(WordInfo.fromJson(v));
-      });
-    }
-    synonym = json['Synonym'].cast<String>();
-    antonym = json['Antonym'].cast<String>();
+  factory WWNWordInfo.fromJson(Map<String, dynamic> json) {
+    return WWNWordInfo(
+      word: json['Word'],
+      homonymCode: json['HomonymCode'],
+      wordInfo: (json['WordInfo'] as List<dynamic>?)
+          ?.map((v) => WordInfo.fromJson(v))
+          .toList(),
+      synonym: (json['Synonym'] as List<dynamic>?)?.cast<String>(),
+      antonym: (json['Antonym'] as List<dynamic>?)?.cast<String>(),
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -119,26 +136,31 @@ class WordInfo {
   List<String>? hypernym;
   List<String>? hypornym;
 
-  WordInfo(
-      {this.polysemyCode,
-      this.definition,
-      this.pOS,
-      this.hypernym,
-      this.hypornym});
+  WordInfo({
+    this.polysemyCode,
+    this.definition,
+    this.pOS,
+    this.hypernym,
+    this.hypornym,
+  });
 
-  factory WordInfo.fromJson(Map<String, dynamic> json) => WordInfo(
-        polysemyCode: json['polysemyCode'],
-        definition: json['definition'],
-        pOS: json['pOS'],
-        hypornym: json['hypornym'],
-        hypernym: json['hypernym'],
-      );
+  factory WordInfo.fromJson(Map<String, dynamic> json) {
+    return WordInfo(
+      polysemyCode: json['PolysemyCode'],
+      definition: json['Definition'],
+      pOS: json['POS'],
+      hypernym: (json['Hypernym'] as List<dynamic>?)?.cast<String>(),
+      hypornym: (json['Hypornym'] as List<dynamic>?)?.cast<String>(),
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        'polysemyCode': polysemyCode,
-        'definition': definition,
-        'pOS': pOS,
-        'hypornym': hypornym,
-        'hypernym': hypernym,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['PolysemyCode'] = polysemyCode;
+    data['Definition'] = definition;
+    data['POS'] = pOS;
+    data['Hypernym'] = hypernym;
+    data['Hypornym'] = hypornym;
+    return data;
+  }
 }
