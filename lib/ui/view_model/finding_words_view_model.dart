@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:lexi_learn/data/model/finding_words_model.dart';
-import 'package:lexi_learn/data/repository/finding_words.repository.dart';
+import 'package:lexi_learn/data/repository/finding_words_repository.dart';
 
 class FindingWordsViewModel extends ChangeNotifier {
   final FindingWordsRepository _findingWordsRepository =
