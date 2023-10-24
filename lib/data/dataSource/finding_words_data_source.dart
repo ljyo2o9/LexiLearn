@@ -4,7 +4,7 @@ import 'package:lexi_learn/data/model/finding_words_model.dart';
 import 'package:lexi_learn/secret.dart';
 
 class FindingWordData {
-  Future<List<WWNWordInfo>> getWordList(String word) async {
+  Future<List<WWNWordInfo>> getWordData(String word) async {
     final baseOptions = BaseOptions(
       baseUrl: 'http://aiopen.etri.re.kr:8000',
       headers: {'Authorization': secret},
