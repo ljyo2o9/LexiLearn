@@ -12,7 +12,8 @@ class FindingWordsViewModel extends ChangeNotifier {
   List<WWNWordInfo> get findingWordsList => _findingWordsList;
 
   Future<void> getFindingWordsList(word) async {
-    _findingWordsList = await _findingWordsRepository.getWeatherList(word);
+    _findingWordsList =
+        await _findingWordsRepository.getWeatherRepositofy(word);
     notifyListeners();
   }
 }
