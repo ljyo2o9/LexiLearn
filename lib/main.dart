@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lexi_learn/ui/view_model/finding_word_view_model.dart';
+import 'package:lexi_learn/ui/view_model/finding_words_view_model.dart';
 
 import 'package:lexi_learn/ui/view/main_page.dart';
 import 'package:lexi_learn/ui/view/finding_words_page.dart';
