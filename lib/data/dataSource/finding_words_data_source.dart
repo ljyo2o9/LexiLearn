@@ -17,8 +17,12 @@ class FindingWordData {
       "argument": {"word": word}
     });
 
-    var responseData = FindingWordsModel.fromJson(response.data);
+    if (response.statusCode == 200) {
+      var responseData = FindingWordsModel.fromJson(response.data);
 
-    return responseData.returnObject?.wWNWordInfo ?? [];
+      return responseData.returnObject?.wWNWordInfo ?? [];
+    } else {
+      throw Exception(response.data);
+    }
   }
 }
