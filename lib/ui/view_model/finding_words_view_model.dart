@@ -13,7 +13,7 @@ class FindingWordsViewModel extends ChangeNotifier {
 
   Future<void> getFindingWordsList(word) async {
     _findingWordsList =
-        await _findingWordsRepository.getWeatherRepositofy(word);
+        await _findingWordsRepository.getWeatherRepository(word);
     notifyListeners();
   }
 }
