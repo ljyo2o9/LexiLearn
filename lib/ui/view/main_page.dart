@@ -96,11 +96,16 @@ class MainPage extends StatelessWidget {
                     ),
 
                     /// 위키요약
-                    abilityWidget(
-                      abilityWidgetWid,
-                      'wiki',
-                      '위키요약',
-                      '위키백과에 있는 일부 내용을 Ai가 요약해서 보여줘요!',
+                    GestureDetector(
+                      onTap: () {
+                        context.push('/findingWiki');
+                      },
+                      child: abilityWidget(
+                        abilityWidgetWid,
+                        'wiki',
+                        '위키요약',
+                        '위키백과에 있는 일부 내용을 Ai가 요약해서 보여줘요!',
+                      ),
                     ),
                   ],
                 ),
