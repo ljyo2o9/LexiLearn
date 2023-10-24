@@ -7,6 +7,7 @@ import 'package:lexi_learn/ui/view_model/finding_words_view_model.dart';
 
 import 'package:lexi_learn/ui/view/main_page.dart';
 import 'package:lexi_learn/ui/view/finding_words_page.dart';
+import 'package:lexi_learn/ui/view/finding_wiki_page.dart';
 
 final GoRouter _router = GoRouter(
   initialLocation: '/',
@@ -19,6 +20,10 @@ final GoRouter _router = GoRouter(
       path: '/findingWords',
       builder: (_, state) => const FindingWordsPage(),
     ),
+    GoRoute(
+      path: '/findingWiki',
+      builder: (context, state) => const FindingWikiPage(),
+    )
   ],
 );
 
