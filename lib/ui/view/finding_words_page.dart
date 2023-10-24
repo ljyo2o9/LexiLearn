@@ -139,7 +139,7 @@ class FindingWordsPage extends StatelessWidget {
               /// 검색 결과
               getFindingWord.findingWordsList.isNotEmpty
                   ? SizedBox(
-                      height: 390.h,
+                      height: 385.h,
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         itemCount:
@@ -172,7 +172,7 @@ class FindingWordsPage extends StatelessWidget {
                       ),
                     )
                   : SizedBox(
-                      height: 440.h,
+                      height: 435.h,
                       child: Center(
                         child: Text(
                           '아직 데이터가 없습니다.',
