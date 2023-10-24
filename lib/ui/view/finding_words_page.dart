@@ -77,7 +77,7 @@ class FindingWordsPage extends StatelessWidget {
                         //
                         /// Divider
                         Padding(
-                          padding: EdgeInsets.only(top: 13.h, bottom: 18.h),
+                          padding: EdgeInsets.only(top: 13.h, bottom: 10.h),
                           child: Container(
                             width: double.infinity,
                             height: 1.h,
@@ -90,7 +90,14 @@ class FindingWordsPage extends StatelessWidget {
                           child: TextField(
                             controller: searchController,
                             maxLength: 1000,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
+                              hintText: '단어로 검색해주세요 ex) 당근, 감자',
+                              hintStyle: TextStyle(
+                                color: const Color(0xFF7D8083),
+                                fontFamily: 'NotoSansKR',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18.sp,
+                              ),
                               border: InputBorder.none,
                               counterText: '',
                             ),
