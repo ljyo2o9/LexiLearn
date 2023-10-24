@@ -127,12 +127,12 @@ class FindingWordsPage extends StatelessWidget {
                 ),
               ),
               //
-              /// ~의 검색결과
+              /// ~의 검색 결과
               getFindingWord.findingWordsList.isNotEmpty
                   ? Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
                       child: Text(
-                        '${getFindingWord.findingWordsList[0].word.toString()}의 검색결과',
+                        '${getFindingWord.findingWordsList[0].word.toString()}의 검색 결과',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'NotoSansKR',
