@@ -4,7 +4,7 @@ import 'package:lexi_learn/data/dataSource/finding_words_data_source.dart';
 class FindingWordsRepository {
   final FindingWordData _findingWordData = FindingWordData();
 
-  Future<List<WWNWordInfo>> getWeatherList(String word) async {
-    return _findingWordData.getWordList(word);
+  Future<List<WWNWordInfo>> getWeatherRepositofy(String word) async {
+    return _findingWordData.getWordData(word);
   }
 }
