@@ -20,7 +20,15 @@ notFindingWiki(_) async {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('확인'),
+            child: Text(
+              '확인',
+              style: TextStyle(
+                color: const Color(0xFF000000),
+                fontFamily: 'NotoSansKR',
+                fontWeight: FontWeight.w500,
+                fontSize: 20.sp,
+              ),
+            ),
           )
         ],
       );
