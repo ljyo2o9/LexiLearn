@@ -41,7 +41,7 @@ Container abilityWidget(var abilityWidgetWid, picture, title, content) {
           Padding(
             padding: EdgeInsets.only(top: 12.h, bottom: 20.h),
             child: SizedBox(
-              height: 70.h,
+              height: 72.h,
               child: Text(
                 content,
                 style: TextStyle(
