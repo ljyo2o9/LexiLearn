@@ -5,8 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:lexi_learn/ui/view_model/finding_wiki_view_model.dart';
+import 'package:lexi_learn/ui/view_model/widget_set_state.dart';
 
 import 'package:lexi_learn/ui/widget/finding_wiki_page_show_dialog.dart';
+import 'package:lexi_learn/ui/widget/bookmark_image_list.dart';
 
 class FindingWikiPage extends StatelessWidget {
   const FindingWikiPage({super.key});
@@ -14,6 +16,7 @@ class FindingWikiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var getFindingWiki = Provider.of<FindingWikiViewModel>(context);
+    var widgetSetState = Provider.of<WidgetSetState>(context);
     TextEditingController searchWikiController = TextEditingController();
 
     openNotFindingWiki() {
@@ -138,14 +141,29 @@ class FindingWikiPage extends StatelessWidget {
               getFindingWiki.findingWikiList.isNotEmpty
                   ? Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
-                      child: Text(
-                        '${getFindingWiki.searchText}의 검색 결과',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'NotoSansKR',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20.sp,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${getFindingWiki.searchText}의 검색 결과',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'NotoSansKR',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20.sp,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              widgetSetState.toggle2();
+                            },
+                            child: SvgPicture.asset(
+                              bookmarkImageList[widgetSetState.cnt2],
+                              width: 24.w,
+                              height: 22.h,
+                            ),
+                          )
+                        ],
                       ),
                     )
                   : const SizedBox(),
@@ -241,6 +259,8 @@ class FindingWikiPage extends StatelessWidget {
                   onTap: () {
                     getFindingWiki
                         .getFindingWikiList(searchWikiController.text);
+
+                    widgetSetState.onlyZero2();
                   },
                   child: Container(
                     width: double.infinity,
