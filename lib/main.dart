@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:lexi_learn/ui/view_model/finding_words_view_model.dart';
 import 'package:lexi_learn/ui/view_model/finding_wiki_view_model.dart';
+import 'package:lexi_learn/ui/view_model/widget_set_state.dart';
 
 import 'package:lexi_learn/ui/view/main_page.dart';
 import 'package:lexi_learn/ui/view/finding_words_page.dart';
@@ -34,6 +35,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => FindingWordsViewModel()),
         ChangeNotifierProvider(create: (context) => FindingWikiViewModel()),
+        ChangeNotifierProvider(create: (context) => WidgetSetState()),
       ],
       child: const MyApp(),
     ),
