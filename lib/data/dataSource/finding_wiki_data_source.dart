@@ -14,7 +14,10 @@ class FindingWikiData {
 
     final response = await dio.post('/WikiQA', data: {
       "request_id": "1",
-      "argument": {"type": "hybridqa", "question": word}
+      "argument": {
+        "type": "hybridqa",
+        "question": word == '' ? '검색결과를 찾을 수 없습니다' : word,
+      }
     });
 
     if (response.statusCode == 200) {
