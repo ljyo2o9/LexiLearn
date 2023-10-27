@@ -153,16 +153,6 @@ class FindingWikiPage extends StatelessWidget {
                               fontSize: 20.sp,
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              widgetSetState.toggle2();
-                            },
-                            child: SvgPicture.asset(
-                              bookmarkImageList[widgetSetState.cnt2],
-                              width: 24.w,
-                              height: 22.h,
-                            ),
-                          )
                         ],
                       ),
                     )
@@ -259,8 +249,6 @@ class FindingWikiPage extends StatelessWidget {
                   onTap: () {
                     getFindingWiki
                         .getFindingWikiList(searchWikiController.text);
-
-                    widgetSetState.onlyZero2();
                   },
                   child: Container(
                     width: double.infinity,
