@@ -4,9 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:lexi_learn/ui/view_model/finding_words_view_model.dart';
-import 'package:lexi_learn/ui/view_model/widget_set_state.dart';
-
-import 'package:lexi_learn/ui/widget/bookmark_image_list.dart';
 
 class FindingWordsPage extends StatelessWidget {
   const FindingWordsPage({super.key});
@@ -14,7 +11,6 @@ class FindingWordsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var getFindingWord = Provider.of<FindingWordsViewModel>(context);
-    var widgetSetState = Provider.of<WidgetSetState>(context);
     TextEditingController searchController = TextEditingController();
 
     return Scaffold(
@@ -135,29 +131,14 @@ class FindingWordsPage extends StatelessWidget {
               getFindingWord.findingWordsList.isNotEmpty
                   ? Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${getFindingWord.findingWordsList[0].word.toString()}의 검색 결과',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'NotoSansKR',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20.sp,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              widgetSetState.toggle();
-                            },
-                            child: SvgPicture.asset(
-                              bookmarkImageList[widgetSetState.cnt],
-                              width: 24.w,
-                              height: 22.h,
-                            ),
-                          )
-                        ],
+                      child: Text(
+                        '${getFindingWord.findingWordsList[0].word.toString()}의 검색 결과',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'NotoSansKR',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20.sp,
+                        ),
                       ),
                     )
                   : const SizedBox(),
@@ -219,8 +200,6 @@ class FindingWordsPage extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     getFindingWord.getFindingWordsList(searchController.text);
-
-                    widgetSetState.onlyZero();
                   },
                   child: Container(
                     width: double.infinity,
