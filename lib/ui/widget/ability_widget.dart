@@ -42,13 +42,16 @@ Container abilityWidget(var abilityWidgetWid, picture, title, content) {
             padding: EdgeInsets.only(top: 12.h, bottom: 20.h),
             child: SizedBox(
               height: 72.h,
-              child: Text(
-                content,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'NotoSansKR',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 17.sp,
+              child: SingleChildScrollView(
+                physics: const ClampingScrollPhysics(),
+                child: Text(
+                  content,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'NotoSansKR',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 17.sp,
+                  ),
                 ),
               ),
             ),
