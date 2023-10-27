@@ -174,31 +174,69 @@ class MainPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 52.h),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      'assets/image/bookmark.svg',
-                      width: 22.w,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.w),
-                      child: Text(
-                        '바로가기',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'NotoSansKR',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20.sp,
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/image/bookmark.svg',
+                          width: 22.w,
                         ),
-                      ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.w),
+                          child: Text(
+                            '바로가기',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'NotoSansKR',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20.sp,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    MaterialButton(
-                      onPressed: () {
-                        bookmarkList.alldelete();
+                    GestureDetector(
+                      onTap: () {
+                        bookmarkList.allDel();
+
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              backgroundColor: const Color(0xFFED702D),
+                              title: Text(
+                                '전체 삭제가 완료 되었습니다.',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'NotoSansKR',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20.sp,
+                                ),
+                              ),
+                              actions: [
+                                MaterialButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    '확인',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'NotoSansKR',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 20.sp,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            );
+                          },
+                        );
                       },
-                      child: Container(
-                        color: Colors.red,
-                        width: 20.w,
-                        height: 20.h,
+                      child: SvgPicture.asset(
+                        'assets/image/trash.svg',
+                        width: 22.w,
                       ),
                     )
                   ],
@@ -214,7 +252,6 @@ class MainPage extends StatelessWidget {
                   return Padding(
                     padding: EdgeInsets.only(bottom: 15.h),
                     child: Container(
-                      height: 110.h,
                       decoration: BoxDecoration(
                         color: const Color(0xFFED702D),
                         borderRadius: BorderRadius.circular(10),
@@ -247,8 +284,7 @@ class MainPage extends StatelessWidget {
                                 GestureDetector(
                                   onTap: () async {
                                     await bookmarkList.delBookMarkList(
-                                      bookmarkList.bookmarkList[index].id,
-                                    );
+                                        bookmarkList.bookmarkList[index].id);
 
                                     await bookmarkList.getBookMarkList();
                                   },
@@ -264,7 +300,7 @@ class MainPage extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: 6.h),
                               child: Text(
-                                '${bookmarkList.bookmarkList[index].title} - ${bookmarkList.bookmarkList[index].id}',
+                                bookmarkList.bookmarkList[index].title,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'NotoSansKR',
