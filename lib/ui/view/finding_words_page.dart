@@ -33,7 +33,7 @@ class FindingWordsPage extends StatelessWidget {
       //
       /// Body
       body: Padding(
-        padding: EdgeInsets.only(left: 31.w, right: 31.w, bottom: 20.h),
+        padding: EdgeInsets.only(left: 31.w, right: 31.w),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -131,13 +131,16 @@ class FindingWordsPage extends StatelessWidget {
               getFindingWord.findingWordsList.isNotEmpty
                   ? Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
-                      child: Text(
-                        '${getFindingWord.findingWordsList[0].word.toString()}의 검색 결과',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'NotoSansKR',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20.sp,
+                      child: SizedBox(
+                        height: 30.h,
+                        child: Text(
+                          '${getFindingWord.findingWordsList[0].word.toString()}의 검색 결과',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'NotoSansKR',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20.sp,
+                          ),
                         ),
                       ),
                     )
@@ -146,7 +149,7 @@ class FindingWordsPage extends StatelessWidget {
               /// 검색 결과
               getFindingWord.findingWordsList.isNotEmpty
                   ? SizedBox(
-                      height: 385.h,
+                      height: 380.h,
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         itemCount:
@@ -163,7 +166,6 @@ class FindingWordsPage extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.all(15.w),
                                 child: Text(
-                                  //getFindingWord.findingWordsList[index].definition.toString()
                                   '${index + 1}. ${getFindingWord.findingWordsList[0].wordInfo![index].definition.toString()}',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -179,7 +181,7 @@ class FindingWordsPage extends StatelessWidget {
                       ),
                     )
                   : SizedBox(
-                      height: 435.h,
+                      height: 430.h,
                       child: Center(
                         child: Text(
                           '아직 데이터가 없습니다.',
