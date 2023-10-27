@@ -15,7 +15,7 @@ class FindingWikiPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var getFindingWiki = Provider.of<FindingWikiViewModel>(context);
     TextEditingController searchWikiController = TextEditingController();
-  
+
     //
     /// AlertDialog (Wiki)
     openNotFindingWiki() {
@@ -140,19 +140,17 @@ class FindingWikiPage extends StatelessWidget {
               getFindingWiki.findingWikiList.isNotEmpty
                   ? Padding(
                       padding: EdgeInsets.only(bottom: 20.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${getFindingWiki.searchText}의 검색 결과',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'NotoSansKR',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20.sp,
-                            ),
+                      child: SizedBox(
+                        height: 30.h,
+                        child: Text(
+                          '${getFindingWiki.searchText}의 검색 결과',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'NotoSansKR',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20.sp,
                           ),
-                        ],
+                        ),
                       ),
                     )
                   : const SizedBox(),
@@ -160,7 +158,7 @@ class FindingWikiPage extends StatelessWidget {
               /// 검색 결과
               getFindingWiki.findingWikiList.isNotEmpty
                   ? SizedBox(
-                      height: 385.h,
+                      height: 380.h,
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         itemCount: getFindingWiki.findingWikiList.length,
@@ -226,7 +224,7 @@ class FindingWikiPage extends StatelessWidget {
                       ),
                     )
                   : SizedBox(
-                      height: 435.h,
+                      height: 430.h,
                       child: Center(
                         child: Text(
                           '아직 데이터가 없습니다.',
