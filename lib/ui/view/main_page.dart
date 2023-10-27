@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import 'package:lexi_learn/ui/widget/ability_widget.dart';
+import 'package:lexi_learn/ui/view_model/bookmark_view_model.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -12,11 +14,12 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var abilityWidgetWid =
         ((MediaQuery.of(context).size.width.w - 62.w) / 2.w - 8.w);
+    var bookmarkList = Provider.of<BookMarkViewModel>(context);
 
     return Scaffold(
       backgroundColor: const Color(0xFF1D1F21),
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(left: 31.w, right: 31.w),
           child: Column(
@@ -111,28 +114,54 @@ class MainPage extends StatelessWidget {
                 ),
               ),
 
-              /// 즐겨찾기 Title
               Padding(
-                padding: EdgeInsets.only(top: 52.h),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/image/bookmark.svg',
-                      width: 22.w,
+                padding: EdgeInsets.only(top: 16.h),
+                child: GestureDetector(
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF2C2E30),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.w),
-                      child: Text(
-                        '즐겨찾기',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'NotoSansKR',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20.sp,
-                        ),
+                    child: Padding(
+                      padding: EdgeInsets.all(15.w),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(right: 15.w),
+                            child: SvgPicture.asset(
+                              'assets/image/return.svg',
+                              width: 45.w,
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '바로가기 생성',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'NotoSansKR',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20.sp,
+                                ),
+                              ),
+                              Text(
+                                '자주 검색하는 경우 바로가기를 만들어요!',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'NotoSansKR',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.sp,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
                       ),
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               ),
             ],
