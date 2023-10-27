@@ -6,13 +6,14 @@ notFindingWiki(_) async {
     context: _,
     builder: (context) {
       return AlertDialog(
+        backgroundColor: const Color(0xFFED702D),
         title: Text(
           '이 검색 결과는 더 보러 갈 수 없습니다.',
           style: TextStyle(
-            color: const Color(0xFF000000),
+            color: Colors.white,
             fontFamily: 'NotoSansKR',
             fontWeight: FontWeight.w500,
-            fontSize: 16.sp,
+            fontSize: 22.sp,
           ),
         ),
         actions: [
@@ -23,7 +24,7 @@ notFindingWiki(_) async {
             child: Text(
               '확인',
               style: TextStyle(
-                color: const Color(0xFF000000),
+                color: Colors.white,
                 fontFamily: 'NotoSansKR',
                 fontWeight: FontWeight.w500,
                 fontSize: 20.sp,
