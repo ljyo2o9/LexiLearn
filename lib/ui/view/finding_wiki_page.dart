@@ -48,6 +48,8 @@ class FindingWikiPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //
+              /// 검색과 카메라
               Padding(
                 padding: EdgeInsets.only(top: 54.h),
                 child: Container(
@@ -60,11 +62,11 @@ class FindingWikiPage extends StatelessWidget {
                     padding: EdgeInsets.all(15.w),
                     child: Column(
                       children: [
-                        //
-                        /// 검색과 카메라
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            //
+                            /// 검색
                             Text(
                               '검색',
                               style: TextStyle(
@@ -74,6 +76,8 @@ class FindingWikiPage extends StatelessWidget {
                                 fontSize: 20.sp,
                               ),
                             ),
+                            //
+                            /// 카메라
                             GestureDetector(
                               child: SvgPicture.asset(
                                 'assets/image/camera.svg',

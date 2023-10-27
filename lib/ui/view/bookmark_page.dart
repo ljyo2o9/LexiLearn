@@ -41,11 +41,15 @@ class BookMarkPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //
+              /// 단어, 위키 선택 버튼
               Padding(
                 padding: EdgeInsets.only(top: 31.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    //
+                    /// 단어찾기
                     GestureDetector(
                       onTap: () {
                         widgetSetState.selectWord();
@@ -72,7 +76,11 @@ class BookMarkPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    //
+                    /// 구분
                     SizedBox(width: 16.w),
+                    //
+                    /// 위키요약
                     GestureDetector(
                       onTap: () {
                         widgetSetState.selectWiki();
@@ -102,6 +110,8 @@ class BookMarkPage extends StatelessWidget {
                   ],
                 ),
               ),
+              //
+              /// 검색창
               Padding(
                 padding: EdgeInsets.only(top: 31.h),
                 child: Container(
@@ -116,7 +126,7 @@ class BookMarkPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         //
-                        /// 검색과 카메라
+                        /// 검색
                         Text(
                           '검색',
                           style: TextStyle(
@@ -164,6 +174,8 @@ class BookMarkPage extends StatelessWidget {
                   ),
                 ),
               ),
+
+              /// double.infinity
               SizedBox(height: 430.h),
               //
               /// 검색하기 버튼
