@@ -114,9 +114,14 @@ class MainPage extends StatelessWidget {
                 ),
               ),
 
+              //
+              /// 바로가기 버튼
               Padding(
                 padding: EdgeInsets.only(top: 16.h),
                 child: GestureDetector(
+                  onTap: () {
+                    context.push('/bookmark');
+                  },
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -163,6 +168,117 @@ class MainPage extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
+
+              /// 바로가기 Title
+              Padding(
+                padding: EdgeInsets.only(top: 52.h),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/image/bookmark.svg',
+                      width: 22.w,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.w),
+                      child: Text(
+                        '바로가기',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'NotoSansKR',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20.sp,
+                        ),
+                      ),
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        bookmarkList.alldelete();
+                      },
+                      child: Container(
+                        color: Colors.red,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              //
+              /// List View
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: bookmarkList.bookmarkList.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 15.h),
+                    child: Container(
+                      height: 110.h,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFED702D),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(15.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //
+                            /// BookMark Row
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                //
+                                /// Text ~에서
+                                Text(
+                                  bookmarkList.bookmarkList[index].state == true
+                                      ? "단어찾기에서"
+                                      : "위키요약에서",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'NotoSansKR',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 24.sp,
+                                  ),
+                                ),
+                                //
+                                /// Delete
+                                GestureDetector(
+                                  onTap: () async {
+                                    await bookmarkList.delBookMarkList(
+                                      bookmarkList.bookmarkList[index].id,
+                                    );
+
+                                    await bookmarkList.getBookMarkList();
+                                  },
+                                  child: SvgPicture.asset(
+                                    'assets/image/delete.svg',
+                                    width: 15.w,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            //
+                            /// title
+                            Padding(
+                              padding: EdgeInsets.only(top: 6.h),
+                              child: Text(
+                                '${bookmarkList.bookmarkList[index].title} - ${bookmarkList.bookmarkList[index].id}',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'NotoSansKR',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20.sp,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),
