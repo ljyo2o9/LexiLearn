@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import 'package:lexi_learn/ui/widget/ability_widget.dart';
+import 'package:lexi_learn/ui/widget/bookmark_all_delete.dart';
+
 import 'package:lexi_learn/ui/view_model/bookmark_view_model.dart';
 
 class MainPage extends StatelessWidget {
@@ -196,43 +198,12 @@ class MainPage extends StatelessWidget {
                         ),
                       ],
                     ),
+                    //
+                    /// 전체삭제 아이콘
                     GestureDetector(
                       onTap: () {
                         bookmarkList.allDel();
-
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              backgroundColor: const Color(0xFFED702D),
-                              title: Text(
-                                '전체 삭제가 완료 되었습니다.',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'NotoSansKR',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20.sp,
-                                ),
-                              ),
-                              actions: [
-                                MaterialButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    '확인',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'NotoSansKR',
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 20.sp,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                        );
+                        allDelLog(context);
                       },
                       child: SvgPicture.asset(
                         'assets/image/trash.svg',
