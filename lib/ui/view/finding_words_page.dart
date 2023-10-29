@@ -6,12 +6,14 @@ import 'package:provider/provider.dart';
 import 'package:lexi_learn/ui/view_model/finding_words_view_model.dart';
 
 class FindingWordsPage extends StatelessWidget {
-  const FindingWordsPage({super.key});
+  final String title;
+
+  const FindingWordsPage({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {
     var getFindingWord = Provider.of<FindingWordsViewModel>(context);
-    TextEditingController searchController = TextEditingController();
+    TextEditingController searchController = TextEditingController(text: title);
 
     return Scaffold(
       backgroundColor: const Color(0xFF1D1F21),

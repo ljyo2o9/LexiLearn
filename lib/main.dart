@@ -24,11 +24,11 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(
       path: '/findingWords',
-      builder: (_, state) => const FindingWordsPage(),
+      builder: (_, state) => const FindingWordsPage(title: ''),
     ),
     GoRoute(
       path: '/findingWiki',
-      builder: (context, state) => const FindingWikiPage(),
+      builder: (context, state) => const FindingWikiPage(title: ''),
     ),
     GoRoute(
       path: '/bookmark',

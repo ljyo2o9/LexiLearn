@@ -9,12 +9,15 @@ import 'package:lexi_learn/ui/view_model/finding_wiki_view_model.dart';
 import 'package:lexi_learn/ui/widget/finding_wiki_page_show_dialog.dart';
 
 class FindingWikiPage extends StatelessWidget {
-  const FindingWikiPage({super.key});
+  final String title;
+
+  const FindingWikiPage({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {
     var getFindingWiki = Provider.of<FindingWikiViewModel>(context);
-    TextEditingController searchWikiController = TextEditingController();
+    TextEditingController searchWikiController =
+        TextEditingController(text: title);
 
     //
     /// AlertDialog (Wiki)
