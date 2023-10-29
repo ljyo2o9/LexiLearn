@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lexi_learn/ui/view/finding_wiki_page.dart';
+import 'package:lexi_learn/ui/view/finding_words_page.dart';
 import 'package:provider/provider.dart';
 
 import 'package:lexi_learn/ui/widget/ability_widget.dart';
@@ -222,65 +224,90 @@ class MainPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.only(bottom: 15.h),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFED702D),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(15.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //
-                            /// BookMark Row
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                //
-                                /// Text ~에서
-                                Text(
-                                  bookmarkList.bookmarkList[index].state == true
-                                      ? "단어찾기에서"
-                                      : "위키요약에서",
+                    child: GestureDetector(
+                      onTap: () {
+                        if (bookmarkList.bookmarkList[index].state == true) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FindingWordsPage(
+                                title: bookmarkList.bookmarkList[index].title,
+                              ),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FindingWikiPage(
+                                title: bookmarkList.bookmarkList[index].title,
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFED702D),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(15.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              //
+                              /// BookMark Row
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  //
+                                  /// Text ~에서
+                                  Text(
+                                    bookmarkList.bookmarkList[index].state ==
+                                            true
+                                        ? "단어찾기에서"
+                                        : "위키요약에서",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'NotoSansKR',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 24.sp,
+                                    ),
+                                  ),
+                                  //
+                                  /// Delete
+                                  GestureDetector(
+                                    onTap: () async {
+                                      await bookmarkList.delBookMarkList(
+                                          bookmarkList.bookmarkList[index].id);
+
+                                      await bookmarkList.getBookMarkList();
+                                    },
+                                    child: SvgPicture.asset(
+                                      'assets/image/delete.svg',
+                                      width: 15.w,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              //
+                              /// title
+                              Padding(
+                                padding: EdgeInsets.only(top: 6.h),
+                                child: Text(
+                                  bookmarkList.bookmarkList[index].title,
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: 'NotoSansKR',
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 24.sp,
+                                    fontSize: 20.sp,
                                   ),
-                                ),
-                                //
-                                /// Delete
-                                GestureDetector(
-                                  onTap: () async {
-                                    await bookmarkList.delBookMarkList(
-                                        bookmarkList.bookmarkList[index].id);
-
-                                    await bookmarkList.getBookMarkList();
-                                  },
-                                  child: SvgPicture.asset(
-                                    'assets/image/delete.svg',
-                                    width: 15.w,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            //
-                            /// title
-                            Padding(
-                              padding: EdgeInsets.only(top: 6.h),
-                              child: Text(
-                                bookmarkList.bookmarkList[index].title,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'NotoSansKR',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20.sp,
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
