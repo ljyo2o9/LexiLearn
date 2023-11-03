@@ -31,6 +31,14 @@ class BookMarkPage extends StatelessWidget {
             fontSize: 25.sp,
           ),
         ),
+        leading: GestureDetector(
+            onTap: () {
+              context.go('/');
+            },
+            child: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
+            )),
       ),
       //
       /// Body

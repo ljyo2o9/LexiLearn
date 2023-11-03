@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,15 @@ class FindingWikiPage extends StatelessWidget {
             fontFamily: 'NotoSansKR',
             fontWeight: FontWeight.w500,
             fontSize: 25.sp,
+          ),
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            context.go('/');
+          },
+          child: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.white,
           ),
         ),
       ),

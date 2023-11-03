@@ -218,8 +218,8 @@ class MainPage extends StatelessWidget {
               //
               /// List View
               ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: bookmarkList.bookmarkList.length,
                 itemBuilder: (context, index) {
                   return Padding(
